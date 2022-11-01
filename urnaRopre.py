@@ -128,37 +128,70 @@ def governadorNum():
         
 
 def presidenteNum():
-    GovernadorText = Text(Point(170,260), 'Presidente')
-    GovernadorText.setSize(18)
-    GovernadorText.draw(win)
-    quadroNum1 = Rectangle(Point(93.0, 308.0), Point(130.0, 343.0))
-    quadroNum1.draw(win)
-    quadroNum1 = Rectangle(Point(133.0, 308.0), Point(170.0, 343.0))
-    quadroNum1.draw(win)
-    cont=1
+  PresidenteText = Text(Point(170, 260), 'Presidente')
+  PresidenteText.setSize(18)
+  PresidenteText.draw(win)
+  Seuvoto = Text(Point(120, 220), 'SEU VOTO PARA')
+  Seuvoto.setSize(12)
+  numero = Text(Point(170, 260), 'Número:')
+  nome = Text(Point(170, 260), 'Nome:')
+  partido = Text(Point(170, 260), 'Partido:')
+  quadroNum1 = Rectangle(Point(93.0, 308.0), Point(130.0, 343.0))
+  quadroNum1.draw(win)
+  quadroNum1 = Rectangle(Point(133.0, 308.0), Point(170.0, 343.0))
+  quadroNum1.draw(win)
+  cont = 0
+  candidato = ''
+  i = 0
 
-    while cont <= 2:
-        position = win.getMouse()
-        tecla = botao(position)
-        if cont == 0:
-            GovText1 = Text(Point(110,320), ' ')
-            GovText1.draw(win)
-            GovText1.setText(tecla)
-        if cont == 1:
-            GovText2 = Text(Point(150,320), ' ')
-            GovText2.draw(win)
-            GovText2.setText(tecla)
-        if tecla == 'CONFIRMA':
-            GovText1.undraw()
-            GovText2.undraw()
-            GovernadorText.undraw()
-            presidenteNum()
-            break
+  while cont <= 2:
+    position = win.getMouse()
+    tecla = botao(position)
+    if cont == 0:
+      PreText1 = Text(Point(110, 320), ' ')
+      PreText1.draw(win)
+      PreText1.setText(tecla)
+      candidato = candidato + tecla
+    if cont == 1:
+      PreText2 = Text(Point(150, 320), ' ')
+      PreText2.draw(win)
+      PreText2.setText(tecla)
+      candidato = candidato + tecla
+      with open("urna.csv", "r") as arquivo:
+        arquivo = arquivo.readlines()
+        while i <= 3:
+            if candidato in arquivo[i]:
+                Seuvoto.draw(win)
+                position = win.getMouse()
+                tecla = botao(position)
+                if tecla == 'CORRIGE':
+                    PreText1.undraw()
+                    PreText2.undraw()
+                    PresidenteText.undraw()
+                    Seuvoto.undraw()
+                    presidenteNum()
+                    break
+            print(arquivo[i + 1])
+            i = i + 1
+    if tecla == 'CONFIRMA':
+      PreText1.undraw()
+      PreText2.undraw()
+      PresidenteText.undraw()
+      presidenteNum()
+      break
+    if tecla == 'CORRIGE':
+      PreText1.undraw()
+      PreText2.undraw()
+      PresidenteText.undraw()
+      presidenteNum()
+      break
+    cont = cont + 1
     
    
 
 Urna()
-i = 0
+governadorNum()
+
 while i <= 2:
     i = i + 1
     if i == 1:
