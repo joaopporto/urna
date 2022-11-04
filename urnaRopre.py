@@ -6,6 +6,7 @@ arq = open("urna.csv","r")
 dados = arq.read()
 lista = dados.split("\n")
 lista = lista[:-1]
+print(lista)
 for ind in range(len(lista)):
     lista[ind] = lista[ind].split(";")
 
@@ -85,119 +86,261 @@ def botao(position):
         return "CORRIGE"
     elif x >= 820 and x <= 886 and y >= 481 and y <= 524:
         return "CONFIRMA"
-votoGov = ""
 
         
 
 
 def governadorNum():
-    GovernadorText = Text(Point(170,260), 'Governador')
+    GovernadorText = Text(Point(250,260), 'Governador')
     GovernadorText.setSize(18)
     GovernadorText.draw(win)
-    quadroNum1 = Rectangle(Point(93.0, 308.0), Point(130.0, 343.0))
+    quadroNum1 = Rectangle(Point(123.0, 308.0), Point(160.0, 343.0))
     quadroNum1.draw(win)
-    quadroNum1 = Rectangle(Point(133.0, 308.0), Point(170.0, 343.0))
-    quadroNum1.draw(win)
+    quadroNum2 = Rectangle(Point(163.0, 308.0), Point(200.0, 343.0))
+    quadroNum2.draw(win)
+    branco = Text(Point(320,340), 'VOTO EM BRANCO')
+    #branco.draw(win)
+    branco.setSize(26)
+    aperte = Text(Point(100,470), 'Aperte a tecla: ')
+    #aperte.draw(win)
+    aperte.setSize(11)
+    confirma_voto = Text(Point(200,488), 'CONFIRMA para CONFIRMAR este voto')
+    #confirma_voto.draw(win)
+    confirma_voto.setSize(11)
+    corrige_voto = Text(Point(200,505), 'CORRIGE para REINICIAR este voto')
+    #corrige_voto.draw(win)
+    corrige_voto.setSize(11)
+    linha = Line(Point(42,455), Point(592, 455))
+    #linha.draw(win)
+    Seuvoto = Text(Point(120, 220), 'SEU VOTO PARA')
+    Seuvoto.setSize(12)
+    #Seuvoto.draw(win)
+    numero = Text(Point(78, 323), 'Número: ')
+    #numero.draw(win)
+    numero.setSize(11)
+    numero_errado = Text(Point(142, 359), 'NÚMERO ERRADO ')
+    #numero_errado.draw(win)
+    numero_errado.setSize(16)
+    nome = Text(Point(71, 373), 'Nome: ')
+    #nome.draw(win)
+    nome.setSize(11)
+    nulo = Text(Point(350,402), 'VOTO NULO')
+    #nulo.draw(win)
+    nulo.setSize(26)
+    partido = Text(Point(75, 423), 'Partido: ')
+    #partido.draw(win)
+    partido.setSize(11)
+    
+
+
     cont=0
-    votoGov1 = 0
+    num_partido = ''
+    i = 1
 
     while cont <= 2:
         position = win.getMouse()
         tecla = botao(position)
+        while tecla != '1' and tecla != '2' and tecla != '3' and tecla != '4' and tecla != '5' and tecla != '6' and tecla != '7' and tecla != '8' and tecla != '9' and tecla != '0' and tecla != 'CORRIGE' and tecla != 'CONFIRMA' and tecla != 'BRANCO':
+            position = win.getMouse()
+            tecla = botao(position)
         if cont == 0:
-            GovText1 = Text(Point(110,320), ' ')
+            GovText1 = Text(Point(141,325), ' ')
             GovText1.draw(win)
+            GovText1.setSize(18)
             GovText1.setText(tecla)
+        num_partido = num_partido + tecla
         if cont == 1:
-            GovText2 = Text(Point(150,320), ' ')
+            GovText2 = Text(Point(182,325), ' ')
             GovText2.draw(win)
+            GovText2.setSize(18)
             GovText2.setText(tecla)
+            while i < len(lista):
+                print(i)
+                lista1 = lista[i]
+                if num_partido not in lista1:
+                    i = i + 1
+                else:
+                    nome = Text(Point(85, 373), 'Nome: ' + lista1[1])
+                    nome.draw(win)
+                    nome.setSize(11)
+                    partido = Text(Point(85, 423), 'Partido: ' + lista1[3])
+                    partido.draw(win)
+                    partido.setSize(11)
+                    Seuvoto.draw(win)
+                    linha.draw(win)
+                    aperte.draw(win)
+                    confirma_voto.draw(win)
+                    corrige_voto.draw(win)
+                    numero.draw(win)
+                    break
+            if i == len(lista) and num_partido not in lista:
+                nulo.draw(win)
+                numero_errado.draw(win)
+                Seuvoto.draw(win)
+                linha.draw(win)
+                aperte.draw(win)
+                confirma_voto.draw(win)
+                corrige_voto.draw(win)
+                numero.draw(win)
         if tecla == 'CONFIRMA':
             GovText1.undraw()
             GovText2.undraw()
             GovernadorText.undraw()
+            nulo.undraw()
+            numero_errado.undraw()
+            Seuvoto.undraw()
+            linha.undraw()
+            aperte.undraw()
+            confirma_voto.undraw()
+            corrige_voto.undraw()
+            numero.undraw()
+            nome.undraw()
+            partido.undraw()
             presidenteNum()
             break
         if tecla == 'CORRIGE':
             GovText1.undraw()
             GovText2.undraw()
             GovernadorText.undraw()
+            nulo.undraw()
+            numero_errado.undraw()
+            Seuvoto.undraw()
+            linha.undraw()
+            aperte.undraw()
+            confirma_voto.undraw()
+            corrige_voto.undraw()
+            numero.undraw()
+            nome.undraw()
+            partido.undraw()
             governadorNum()
             break
         cont = cont + 1
         
 
 def presidenteNum():
-  PresidenteText = Text(Point(170, 260), 'Presidente')
-  PresidenteText.setSize(18)
-  PresidenteText.draw(win)
-  Seuvoto = Text(Point(120, 220), 'SEU VOTO PARA')
-  Seuvoto.setSize(12)
-  numero = Text(Point(170, 260), 'Número:')
-  nome = Text(Point(170, 260), 'Nome:')
-  partido = Text(Point(170, 260), 'Partido:')
-  quadroNum1 = Rectangle(Point(93.0, 308.0), Point(130.0, 343.0))
-  quadroNum1.draw(win)
-  quadroNum1 = Rectangle(Point(133.0, 308.0), Point(170.0, 343.0))
-  quadroNum1.draw(win)
-  cont = 0
-  candidato = ''
-  i = 0
+    PresidenteText = Text(Point(250,260), 'Presidente')
+    PresidenteText.setSize(18)
+    PresidenteText.draw(win)
+    quadroNum1 = Rectangle(Point(123.0, 308.0), Point(160.0, 343.0))
+    quadroNum1.draw(win)
+    quadroNum2 = Rectangle(Point(163.0, 308.0), Point(200.0, 343.0))
+    quadroNum2.draw(win)
+    branco = Text(Point(320,340), 'VOTO EM BRANCO')
+    #branco.draw(win)
+    branco.setSize(26)
+    aperte = Text(Point(100,470), 'Aperte a tecla: ')
+    #aperte.draw(win)
+    aperte.setSize(11)
+    confirma_voto = Text(Point(200,488), 'CONFIRMA para CONFIRMAR este voto')
+    #confirma_voto.draw(win)
+    confirma_voto.setSize(11)
+    corrige_voto = Text(Point(200,505), 'CORRIGE para REINICIAR este voto')
+    #corrige_voto.draw(win)
+    corrige_voto.setSize(11)
+    linha = Line(Point(42,455), Point(592, 455))
+    #linha.draw(win)
+    Seuvoto = Text(Point(120, 220), 'SEU VOTO PARA')
+    Seuvoto.setSize(12)
+    #Seuvoto.draw(win)
+    numero = Text(Point(78, 323), 'Número: ')
+    #numero.draw(win)
+    numero.setSize(11)
+    numero_errado = Text(Point(142, 359), 'NÚMERO ERRADO ')
+    #numero_errado.draw(win)
+    numero_errado.setSize(16)
+    nome = Text(Point(71, 373), 'Nome: ')
+    #nome.draw(win)
+    nome.setSize(11)
+    nulo = Text(Point(350,402), 'VOTO NULO')
+    #nulo.draw(win)
+    nulo.setSize(26)
+    partido = Text(Point(75, 423), 'Partido: ')
+    #partido.draw(win)
+    partido.setSize(11)
+    bolsonaro = Image(Point(541, 284), "Img Urna/FgYX3pJXkAISa95.png")
+    #bolsonaro.draw(win)
+    
 
-  while cont <= 2:
-    position = win.getMouse()
-    tecla = botao(position)
-    if cont == 0:
-      PreText1 = Text(Point(110, 320), ' ')
-      PreText1.draw(win)
-      PreText1.setText(tecla)
-      candidato = candidato + tecla
-    if cont == 1:
-      PreText2 = Text(Point(150, 320), ' ')
-      PreText2.draw(win)
-      PreText2.setText(tecla)
-      candidato = candidato + tecla
-      with open("urna.csv", "r") as arquivo:
-        arquivo = arquivo.readlines()
-        while i <= 3:
-            if candidato in arquivo[i]:
-                Seuvoto.draw(win)
-                position = win.getMouse()
-                tecla = botao(position)
-                if tecla == 'CORRIGE':
-                    PreText1.undraw()
-                    PreText2.undraw()
-                    PresidenteText.undraw()
-                    Seuvoto.undraw()
-                    presidenteNum()
+
+    cont=0
+    num_partido = ''
+    i = 1
+
+    while cont <= 2:
+        position = win.getMouse()
+        tecla = botao(position)
+        while tecla != '1' and tecla != '2' and tecla != '3' and tecla != '4' and tecla != '5' and tecla != '6' and tecla != '7' and tecla != '8' and tecla != '9' and tecla != '0' and tecla != 'CORRIGE' and tecla != 'CONFIRMA' and tecla != 'BRANCO':
+            position = win.getMouse()
+            tecla = botao(position)
+        if cont == 0:
+            PreText1 = Text(Point(141,325), ' ')
+            PreText1.draw(win)
+            PreText1.setSize(18)
+            PreText1.setText(tecla)
+        num_partido = num_partido + tecla
+        if cont == 1:
+            PreText2 = Text(Point(182,325), ' ')
+            PreText2.draw(win)
+            PreText2.setSize(18)
+            PreText2.setText(tecla)
+            while i <= len(lista):
+                print(i)
+                lista1 = lista[i]
+                if num_partido not in lista1:
+                    i = i + 1
+                else:
+                    nome = Text(Point(85, 373), 'Nome: ' + lista1[1])
+                    nome.draw(win)
+                    nome.setSize(11)
+                    partido = Text(Point(85, 423), 'Partido: ' + lista1[3])
+                    partido.draw(win)
+                    partido.setSize(11)
+                    Seuvoto.draw(win)
+                    linha.draw(win)
+                    aperte.draw(win)
+                    confirma_voto.draw(win)
+                    corrige_voto.draw(win)
+                    numero.draw(win)
                     break
-            print(arquivo[i + 1])
-            i = i + 1
-    if tecla == 'CONFIRMA':
-      PreText1.undraw()
-      PreText2.undraw()
-      PresidenteText.undraw()
-      presidenteNum()
-      break
-    if tecla == 'CORRIGE':
-      PreText1.undraw()
-      PreText2.undraw()
-      PresidenteText.undraw()
-      presidenteNum()
-      break
-    cont = cont + 1
+            if i == len(lista) and num_partido not in lista:
+                nulo.draw(win)
+                numero_errado.draw(win)
+                Seuvoto.draw(win)
+                linha.draw(win)
+                aperte.draw(win)
+                confirma_voto.draw(win)
+                corrige_voto.draw(win)
+                numero.draw(win)
+        if tecla == 'CONFIRMA':
+            PreText1.undraw()
+            PreText2.undraw()
+            PresidenteText.undraw()
+            presidenteNum()
+            break
+        if tecla == 'CORRIGE':
+            PreText1.undraw()
+            PreText2.undraw()
+            PresidenteText.undraw()
+            nulo.undraw()
+            numero_errado.undraw()
+            Seuvoto.undraw()
+            linha.undraw()
+            aperte.undraw()
+            confirma_voto.undraw()
+            corrige_voto.undraw()
+            numero.undraw()
+            nome.undraw()
+            partido.undraw()
+            presidenteNum()
+            break
+        cont = cont + 1
     
    
 
 Urna()
 governadorNum()
 
-while i <= 2:
-    i = i + 1
-    if i == 1:
-        governadorNum()
-    else:
-        presidenteNum()
+
 
 position = win.getMouse()
 print(position)
