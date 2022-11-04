@@ -5,7 +5,6 @@ from graphics import *
 arq = open("urna.csv","r")
 dados = arq.read()
 lista = dados.split("\n")
-lista = lista[:-1]
 print(lista)
 for ind in range(len(lista)):
     lista[ind] = lista[ind].split(";")
@@ -283,8 +282,9 @@ def presidenteNum():
             PreText2.draw(win)
             PreText2.setSize(18)
             PreText2.setText(tecla)
-            while i <= len(lista):
+            while i < len(lista):
                 print(i)
+                print(lista[i])
                 lista1 = lista[i]
                 if num_partido not in lista1:
                     i = i + 1
