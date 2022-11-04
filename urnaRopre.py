@@ -128,7 +128,7 @@ def governadorNum():
     partido = Text(Point(75, 423), 'Partido: ')
     #partido.draw(win)
     partido.setSize(11)
-    
+    imagem = Image(Point(491, 272), 'Img urna/n0.png')
 
 
     cont=0
@@ -271,13 +271,9 @@ def governadorNum():
                 lista1 = lista[i]
                 if num_partido not in lista1:
                     i = i + 1
-                else:
-                    nome = Text(Point(85, 373), 'Nome: ' + lista1[1])
-                    nome.draw(win)
-                    nome.setSize(11)
-                    partido = Text(Point(85, 423), 'Partido: ' + lista1[3])
-                    partido.draw(win)
-                    partido.setSize(11)
+                elif lista1[0] != 'governador':
+                    nulo.draw(win)
+                    numero_errado.draw(win)
                     Seuvoto.draw(win)
                     linha.draw(win)
                     aperte.draw(win)
@@ -285,6 +281,22 @@ def governadorNum():
                     corrige_voto.draw(win)
                     numero.draw(win)
                     break
+                else:
+                    nome = Text(Point(91, 373), 'Nome: ' + lista1[1])
+                    nome.draw(win)
+                    nome.setSize(11)
+                    partido = Text(Point(85, 423), 'Partido: ' + lista1[3])
+                    partido.draw(win)
+                    partido.setSize(11)
+                    imagem = Image(Point(491, 310), 'Img urna/' + lista1[4])
+                    imagem.draw(win)
+                    Seuvoto.draw(win)
+                    linha.draw(win)
+                    aperte.draw(win)
+                    confirma_voto.draw(win)
+                    corrige_voto.draw(win)
+                    numero.draw(win)
+                    break                
             if i == len(lista) and num_partido not in lista:
                 nulo.draw(win)
                 numero_errado.draw(win)
@@ -310,8 +322,8 @@ def governadorNum():
             partido.undraw()
             quadroNum1.undraw()
             quadroNum2.undraw()
+            imagem.undraw()
             presidenteNum()
-            break
         if tecla == 'CORRIGE':
             GovText1.undraw()
             GovText2.undraw()
@@ -328,12 +340,14 @@ def governadorNum():
             partido.undraw()
             quadroNum1.undraw()
             quadroNum2.undraw()
+            imagem.undraw()
             governadorNum()
             break
         cont = cont + 1
         
 
 def presidenteNum():
+
     PresidenteText = Text(Point(250,260), 'Presidente')
     PresidenteText.setSize(18)
     PresidenteText.draw(win)
@@ -375,6 +389,7 @@ def presidenteNum():
     partido.setSize(11)
     bolsonaro = Image(Point(541, 284), "Img Urna/FgYX3pJXkAISa95.png")
     #bolsonaro.draw(win)
+    imagem = Image(Point(491, 272), 'Img urna/n0.png')
     
 
 
@@ -516,6 +531,16 @@ def presidenteNum():
                     break
             while i < len(lista):
                 lista1 = lista[i]
+                if lista1[0] != 'presidente':
+                    nulo.draw(win)
+                    numero_errado.draw(win)
+                    Seuvoto.draw(win)
+                    linha.draw(win)
+                    aperte.draw(win)
+                    confirma_voto.draw(win)
+                    corrige_voto.draw(win)
+                    numero.draw(win)
+                    break
                 if num_partido not in lista1:
                     i = i + 1
                 else:
@@ -525,6 +550,8 @@ def presidenteNum():
                     partido = Text(Point(85, 423), 'Partido: ' + lista1[3])
                     partido.draw(win)
                     partido.setSize(11)
+                    imagem = Image(Point(491, 272), 'Img urna/' + lista1[4])
+                    imagem.draw(win)
                     Seuvoto.draw(win)
                     linha.draw(win)
                     aperte.draw(win)
@@ -559,6 +586,7 @@ def presidenteNum():
             partido.undraw()
             quadroNum1.undraw()
             quadroNum2.undraw()
+            imagem.undraw()
             fim = Text(Point(300,350), 'FIM')
             fim.draw(win)
             fim.setSize(35)
@@ -572,12 +600,11 @@ def presidenteNum():
                 fim.undraw()
                 votou.undraw()
                 governadorNum()
-                loop == True
-            break
         if tecla == 'CORRIGE':
             PreText1.undraw()
             PreText2.undraw()
             PresidenteText.undraw()
+            imagem.undraw()
             nulo.undraw()
             numero_errado.undraw()
             Seuvoto.undraw()
