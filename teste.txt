@@ -1,0 +1,2 @@
+Voto22;Voto13;Branco-Nulos
+4;3;1
