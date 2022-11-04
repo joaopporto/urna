@@ -559,6 +559,20 @@ def presidenteNum():
             partido.undraw()
             quadroNum1.undraw()
             quadroNum2.undraw()
+            fim = Text(Point(300,350), 'FIM')
+            fim.draw(win)
+            fim.setSize(35)
+            votou = Text(Point(520,499), 'VOTOU')
+            votou.setTextColor(color_rgb(199,199,199))
+            votou.draw(win)
+            votou.setSize(25)
+            loop = False
+            while loop == False:
+                win.getMouse()
+                fim.undraw()
+                votou.undraw()
+                governadorNum()
+                loop == True
             break
         if tecla == 'CORRIGE':
             PreText1.undraw()
