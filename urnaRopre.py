@@ -180,6 +180,8 @@ def governadorNum():
                     nome.undraw()
                     partido.undraw()
                     branco.undraw()
+                    quadroNum1.undraw()
+                    quadroNum2.undraw()
                     presidenteNum()
                     break
                 if tecla == 'CORRIGE':
@@ -196,6 +198,8 @@ def governadorNum():
                     nome.undraw()
                     partido.undraw()
                     branco.undraw()
+                    quadroNum1.undraw()
+                    quadroNum2.undraw()
                     governadorNum()
                     break
         num_partido = num_partido + tecla
@@ -240,6 +244,8 @@ def governadorNum():
                     nome.undraw()
                     partido.undraw()
                     branco.undraw()
+                    quadroNum1.undraw()
+                    quadroNum2.undraw()
                     presidenteNum()
                     break
                 if tecla == 'CORRIGE':
@@ -257,6 +263,8 @@ def governadorNum():
                     nome.undraw()
                     partido.undraw()
                     branco.undraw()
+                    quadroNum1.undraw()
+                    quadroNum2.undraw()
                     governadorNum()
                     break
             while i < len(lista):
@@ -300,6 +308,8 @@ def governadorNum():
             numero.undraw()
             nome.undraw()
             partido.undraw()
+            quadroNum1.undraw()
+            quadroNum2.undraw()
             presidenteNum()
             break
         if tecla == 'CORRIGE':
@@ -316,6 +326,8 @@ def governadorNum():
             numero.undraw()
             nome.undraw()
             partido.undraw()
+            quadroNum1.undraw()
+            quadroNum2.undraw()
             governadorNum()
             break
         cont = cont + 1
@@ -415,6 +427,8 @@ def presidenteNum():
                     nome.undraw()
                     partido.undraw()
                     branco.undraw()
+                    quadroNum1.undraw()
+                    quadroNum2.undraw()
                     presidenteNum()
                     break
                 if tecla == 'CORRIGE':
@@ -431,7 +445,9 @@ def presidenteNum():
                     nome.undraw()
                     partido.undraw()
                     branco.undraw()
-                    governadorNum()
+                    quadroNum1.undraw()
+                    quadroNum2.undraw()
+                    presidenteNum()
                     break
         num_partido = num_partido + tecla
         if cont == 1:
@@ -475,6 +491,8 @@ def presidenteNum():
                     nome.undraw()
                     partido.undraw()
                     branco.undraw()
+                    quadroNum1.undraw()
+                    quadroNum2.undraw()
                     presidenteNum()
                     break
                 if tecla == 'CORRIGE':
@@ -492,7 +510,9 @@ def presidenteNum():
                     nome.undraw()
                     partido.undraw()
                     branco.undraw()
-                    governadorNum()
+                    quadroNum1.undraw()
+                    quadroNum2.undraw()
+                    presidenteNum()
                     break
             while i < len(lista):
                 lista1 = lista[i]
@@ -522,10 +542,23 @@ def presidenteNum():
                 corrige_voto.draw(win)
                 numero.draw(win)
         if tecla == 'CONFIRMA':
+            quadroNum1.undraw()
+            quadroNum2.undraw()
             PreText1.undraw()
             PreText2.undraw()
             PresidenteText.undraw()
-            presidenteNum()
+            nulo.undraw()
+            numero_errado.undraw()
+            Seuvoto.undraw()
+            linha.undraw()
+            aperte.undraw()
+            confirma_voto.undraw()
+            corrige_voto.undraw()
+            numero.undraw()
+            nome.undraw()
+            partido.undraw()
+            quadroNum1.undraw()
+            quadroNum2.undraw()
             break
         if tecla == 'CORRIGE':
             PreText1.undraw()
@@ -541,9 +574,13 @@ def presidenteNum():
             numero.undraw()
             nome.undraw()
             partido.undraw()
+            quadroNum1.undraw()
+            quadroNum2.undraw()
             presidenteNum()
             break
         cont = cont + 1
+
+
     
    
 
